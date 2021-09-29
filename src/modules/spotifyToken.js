@@ -16,7 +16,7 @@ let postBody = {
 };
 
 module.exports = getToken;
-async function getToken() {
+function getToken() {
   return axios
     .post(
       "https://accounts.spotify.com/api/token",

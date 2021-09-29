@@ -18,7 +18,7 @@
         {{ artista.name }}
         <button
           @click="$emit('addArtist', artista), cleanUp()"
-          class="button is-light is-small is-rounded"
+          class="button is-light is-small is-rounded ml-2"
         >
           Add!
         </button>

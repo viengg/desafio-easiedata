@@ -1,6 +1,6 @@
 <template>
   <modal>
-    <img :src="artist.images[1].url" />
+    <img :src="artist.images[1].url" class="center" />
     <h1>{{ artist.name }}</h1>
     <p>Spotify ID: {{ artist.id }}</p>
     <p>
@@ -30,3 +30,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

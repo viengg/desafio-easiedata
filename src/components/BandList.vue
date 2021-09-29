@@ -21,18 +21,18 @@
           <td>{{ formataGenero(item.genres) }}</td>
           <td>
             <button
-              @click="$emit('removeArtist', item.name)"
-              class="button is-light is-rounded"
-            >
-              Remove
-            </button>
-          </td>
-          <td>
-            <button
               @click="$emit('displayDetails', item)"
               class="button is-light is-rounded"
             >
               Details
+            </button>
+          </td>
+          <td>
+            <button
+              @click="$emit('removeArtist', item.name)"
+              class="button is-light is-rounded"
+            >
+              Remove
             </button>
           </td>
         </tr>

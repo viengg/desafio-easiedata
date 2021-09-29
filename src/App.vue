@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <add-artist @displayModal="showSearchModal = true" />
+  <div class="content">
+    <h1 class="title is-1">Desafio easiedata</h1>
     <band-list
       @displayModal="showSearchModal = true"
       @removeArtist="removeArtist"
       @displayDetails="displayDetails"
       :bandas="bandas"
     />
+    <add-artist @displayModal="showSearchModal = true" />
     <search-modal
       @addArtist="addArtista"
       @closeModal="showSearchModal = false"

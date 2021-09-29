@@ -7,21 +7,33 @@
       </p>
     </div>
     <div v-else>
-      <table>
+      <table class="table is-striped">
         <tr>
           <th>Artist Name</th>
           <th>Follower Count</th>
           <th>Genres</th>
+          <th></th>
+          <th></th>
         </tr>
         <tr v-for="(item, index) of bandas" :key="index">
           <td>{{ item.name }}</td>
           <td>{{ item.followers.total }}</td>
           <td>{{ formataGenero(item.genres) }}</td>
           <td>
-            <button @click="$emit('removeArtist', item.name)">Remove</button>
+            <button
+              @click="$emit('removeArtist', item.name)"
+              class="button is-light is-rounded"
+            >
+              Remove
+            </button>
           </td>
           <td>
-            <button @click="$emit('displayDetails', item)">Details</button>
+            <button
+              @click="$emit('displayDetails', item)"
+              class="button is-light is-rounded"
+            >
+              Details
+            </button>
           </td>
         </tr>
       </table>

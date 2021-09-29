@@ -1,17 +1,27 @@
 <template>
   <modal>
-    <label>Search</label>
-    <input
-      @keyup.enter="pesquisaArtista"
-      type="text"
-      placeholder="Start typing the artist's name here..."
-      v-model="nomeArtista"
-    />
-    <button @click="pesquisaArtista">Go!</button>
+    <label class="label">Search</label>
+    <div class="field is-grouped">
+      <input
+        @keyup.enter="pesquisaArtista"
+        type="text"
+        placeholder="Start typing the artist's name here..."
+        v-model="nomeArtista"
+        class="input mr-3 is-rounded"
+      />
+      <button @click="pesquisaArtista" class="button is-primary is-rounded">
+        Go!
+      </button>
+    </div>
     <ul>
-      <li v-for="(artista, index) in artistas" :key="index">
+      <li v-for="(artista, index) in artistas" :key="index" class="mt-3">
         {{ artista.name }}
-        <button @click="$emit('addArtist', artista), cleanUp()">Add!</button>
+        <button
+          @click="$emit('addArtist', artista), cleanUp()"
+          class="button is-light is-small is-rounded"
+        >
+          Add!
+        </button>
       </li>
     </ul>
   </modal>
@@ -39,6 +49,10 @@ export default {
   },
   methods: {
     pesquisaArtista() {
+      if (!this.nomeArtista) {
+        return;
+      }
+
       axios
         .get(
           `https://api.spotify.com/v1/search?q=artist:${this.nomeArtista}&type=artist`,

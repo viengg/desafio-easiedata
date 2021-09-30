@@ -29,43 +29,22 @@
 
 <script>
 import Modal from "./Modal.vue";
-import getSpotifyToken from "../modules/spotifyToken";
-const axios = require("axios");
+import spotifyAPI from "../modules/spotifyAPI";
 
 export default {
   name: "SearchModal",
   components: { Modal },
   data() {
     return {
-      token: "",
       nomeArtista: "",
       artistas: [],
     };
   },
-  mounted() {
-    getSpotifyToken()
-      .then((data) => (this.token = data))
-      .catch((err) => console.log(err));
-  },
   methods: {
     pesquisaArtista() {
-      if (!this.nomeArtista) {
-        return;
-      }
-
-      axios
-        .get(
-          `https://api.spotify.com/v1/search?q=artist:${this.nomeArtista}&type=artist`,
-          {
-            headers: {
-              Authorization: `Bearer ${this.token}`,
-            },
-          }
-        )
-        .then((data) => {
-          console.log(data);
-          this.artistas = data.data.artists.items;
-        })
+      spotifyAPI
+        .search(this.nomeArtista)
+        .then((artistas) => (this.artistas = artistas))
         .catch((err) => console.log(err));
     },
     cleanUp() {

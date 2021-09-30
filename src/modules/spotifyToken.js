@@ -15,15 +15,11 @@ let postBody = {
   grant_type: "client_credentials",
 };
 
-module.exports = getToken;
-function getToken() {
-  return axios
-    .post(
-      "https://accounts.spotify.com/api/token",
-      qs.stringify(postBody),
-      postHeaders
-    )
-    .then(function(response) {
-      return response.data.access_token;
-    });
-}
+export const getToken = async () => {
+  const response = await axios.post(
+    "https://accounts.spotify.com/api/token",
+    qs.stringify(postBody),
+    postHeaders
+  );
+  return response.data.access_token;
+};

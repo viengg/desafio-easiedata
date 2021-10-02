@@ -42,6 +42,8 @@ export default {
   },
   methods: {
     pesquisaArtista() {
+      if (!this.nomeArtista) return;
+
       spotifyAPI
         .search(this.nomeArtista)
         .then((artistas) => (this.artistas = artistas))

@@ -11,7 +11,7 @@ const postHeaders = {
   },
 };
 
-let postBody = {
+const postBody = {
   grant_type: "client_credentials",
 };
 
